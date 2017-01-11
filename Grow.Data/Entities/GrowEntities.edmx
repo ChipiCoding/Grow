@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GROWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Farm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateBegin" Type="date" Nullable="false" />
+          <Property Name="dateEnd" Type="date" />
+          <Property Name="idTypeFarm" Type="bigint" Nullable="false" />
+          <Property Name="idLight" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Ligth">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="watts" Type="int" Nullable="false" />
+          <Property Name="idTypeLight" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="idSeed" Type="bigint" Nullable="false" />
+          <Property Name="idFarm" Type="bigint" Nullable="false" />
+          <Property Name="dateGermination" Type="date" />
+          <Property Name="dateGrow" Type="date" />
+          <Property Name="dateFlow" Type="date" />
+        </EntityType>
+        <EntityType Name="Seed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idBank" Type="bigint" Nullable="false" />
+          <Property Name="genetic" Type="nvarchar" MaxLength="50" />
+          <Property Name="daysGrow" Type="int" />
+          <Property Name="daysFlow" Type="int" />
+          <Property Name="heightIndoor" Type="int" />
+          <Property Name="heightOutdoor" Type="int" />
+          <Property Name="idTypeSeed" Type="bigint" Nullable="false" />
+          <Property Name="idSex" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeFarm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeLight">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeSeed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Variaty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VariatySeed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSeed" Type="bigint" Nullable="false" />
+          <Property Name="idVariety" Type="bigint" Nullable="false" />
+          <Property Name="porcentage" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Farm_Farm">
+          <End Role="TypeFarm" Type="Self.TypeFarm" Multiplicity="1" />
+          <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeFarm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farm">
+              <PropertyRef Name="idTypeFarm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Farm_TypeLight">
+          <End Role="Ligth" Type="Self.Ligth" Multiplicity="0..1" />
+          <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ligth">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farm">
+              <PropertyRef Name="idLight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ligth_TypeLight">
+          <End Role="TypeLight" Type="Self.TypeLight" Multiplicity="1" />
+          <End Role="Ligth" Type="Self.Ligth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeLight">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ligth">
+              <PropertyRef Name="idTypeLight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Farm">
+          <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="idFarm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Plant">
+          <End Role="Seed" Type="Self.Seed" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="idSeed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seed_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Seed" Type="Self.Seed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seed">
+              <PropertyRef Name="idBank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seed_Sex">
+          <End Role="Sex" Type="Self.Sex" Multiplicity="1" />
+          <End Role="Seed" Type="Self.Seed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sex">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seed">
+              <PropertyRef Name="idSex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seed_TypeSeed">
+          <End Role="TypeSeed" Type="Self.TypeSeed" Multiplicity="1" />
+          <End Role="Seed" Type="Self.Seed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeSeed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seed">
+              <PropertyRef Name="idTypeSeed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeSeed_Seed">
+          <End Role="Seed" Type="Self.Seed" Multiplicity="1" />
+          <End Role="VariatySeed" Type="Self.VariatySeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VariatySeed">
+              <PropertyRef Name="idSeed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeSeed_Variaty">
+          <End Role="Variaty" Type="Self.Variaty" Multiplicity="1" />
+          <End Role="VariatySeed" Type="Self.VariatySeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variaty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VariatySeed">
+              <PropertyRef Name="idVariety" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GROWModelStoreContainer">
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Farm" EntityType="Self.Farm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ligth" EntityType="Self.Ligth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seed" EntityType="Self.Seed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeFarm" EntityType="Self.TypeFarm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeLight" EntityType="Self.TypeLight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeSeed" EntityType="Self.TypeSeed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variaty" EntityType="Self.Variaty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariatySeed" EntityType="Self.VariatySeed" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Farm_Farm" Association="Self.FK_Farm_Farm">
+            <End Role="TypeFarm" EntitySet="TypeFarm" />
+            <End Role="Farm" EntitySet="Farm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Farm_TypeLight" Association="Self.FK_Farm_TypeLight">
+            <End Role="Ligth" EntitySet="Ligth" />
+            <End Role="Farm" EntitySet="Farm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ligth_TypeLight" Association="Self.FK_Ligth_TypeLight">
+            <End Role="TypeLight" EntitySet="TypeLight" />
+            <End Role="Ligth" EntitySet="Ligth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Farm" Association="Self.FK_Plant_Farm">
+            <End Role="Farm" EntitySet="Farm" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Plant" Association="Self.FK_Plant_Plant">
+            <End Role="Seed" EntitySet="Seed" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seed_Bank" Association="Self.FK_Seed_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Seed" EntitySet="Seed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seed_Sex" Association="Self.FK_Seed_Sex">
+            <End Role="Sex" EntitySet="Sex" />
+            <End Role="Seed" EntitySet="Seed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seed_TypeSeed" Association="Self.FK_Seed_TypeSeed">
+            <End Role="TypeSeed" EntitySet="TypeSeed" />
+            <End Role="Seed" EntitySet="Seed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeSeed_Seed" Association="Self.FK_TypeSeed_Seed">
+            <End Role="Seed" EntitySet="Seed" />
+            <End Role="VariatySeed" EntitySet="VariatySeed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeSeed_Variaty" Association="Self.FK_TypeSeed_Variaty">
+            <End Role="Variaty" EntitySet="Variaty" />
+            <End Role="VariatySeed" EntitySet="VariatySeed" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GROWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Seeds" Relationship="Self.FK_Seed_Bank" FromRole="Bank" ToRole="Seed" />
+        </EntityType>
+        <EntityType Name="Farm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateBegin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateEnd" Type="DateTime" Precision="0" />
+          <Property Name="idTypeFarm" Type="Int64" Nullable="false" />
+          <Property Name="idLight" Type="Int64" />
+          <NavigationProperty Name="TypeFarm" Relationship="Self.FK_Farm_Farm" FromRole="Farm" ToRole="TypeFarm" />
+          <NavigationProperty Name="Ligth" Relationship="Self.FK_Farm_TypeLight" FromRole="Farm" ToRole="Ligth" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Farm" FromRole="Farm" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="Ligth">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="watts" Type="Int32" Nullable="false" />
+          <Property Name="idTypeLight" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Farms" Relationship="Self.FK_Farm_TypeLight" FromRole="Ligth" ToRole="Farm" />
+          <NavigationProperty Name="TypeLight" Relationship="Self.FK_Ligth_TypeLight" FromRole="Ligth" ToRole="TypeLight" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idSeed" Type="Int64" Nullable="false" />
+          <Property Name="idFarm" Type="Int64" Nullable="false" />
+          <Property Name="dateGermination" Type="DateTime" Precision="0" />
+          <Property Name="dateGrow" Type="DateTime" Precision="0" />
+          <Property Name="dateFlow" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Farm" Relationship="Self.FK_Plant_Farm" FromRole="Plant" ToRole="Farm" />
+          <NavigationProperty Name="Seed" Relationship="Self.FK_Plant_Plant" FromRole="Plant" ToRole="Seed" />
+        </EntityType>
+        <EntityType Name="Seed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idBank" Type="Int64" Nullable="false" />
+          <Property Name="genetic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="daysGrow" Type="Int32" />
+          <Property Name="daysFlow" Type="Int32" />
+          <Property Name="heightIndoor" Type="Int32" />
+          <Property Name="heightOutdoor" Type="Int32" />
+          <Property Name="idTypeSeed" Type="Int64" Nullable="false" />
+          <Property Name="idSex" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_Seed_Bank" FromRole="Seed" ToRole="Bank" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Plant_Plant" FromRole="Seed" ToRole="Plant" />
+          <NavigationProperty Name="Sex" Relationship="Self.FK_Seed_Sex" FromRole="Seed" ToRole="Sex" />
+          <NavigationProperty Name="TypeSeed" Relationship="Self.FK_Seed_TypeSeed" FromRole="Seed" ToRole="TypeSeed" />
+          <NavigationProperty Name="VariatySeeds" Relationship="Self.FK_TypeSeed_Seed" FromRole="Seed" ToRole="VariatySeed" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Seeds" Relationship="Self.FK_Seed_Sex" FromRole="Sex" ToRole="Seed" />
+        </EntityType>
+        <EntityType Name="TypeFarm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Farms" Relationship="Self.FK_Farm_Farm" FromRole="TypeFarm" ToRole="Farm" />
+        </EntityType>
+        <EntityType Name="TypeLight">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ligths" Relationship="Self.FK_Ligth_TypeLight" FromRole="TypeLight" ToRole="Ligth" />
+        </EntityType>
+        <EntityType Name="TypeSeed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Seeds" Relationship="Self.FK_Seed_TypeSeed" FromRole="TypeSeed" ToRole="Seed" />
+        </EntityType>
+        <EntityType Name="Variaty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VariatySeeds" Relationship="Self.FK_TypeSeed_Variaty" FromRole="Variaty" ToRole="VariatySeed" />
+        </EntityType>
+        <EntityType Name="VariatySeed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSeed" Type="Int64" Nullable="false" />
+          <Property Name="idVariety" Type="Int64" Nullable="false" />
+          <Property Name="porcentage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Seed" Relationship="Self.FK_TypeSeed_Seed" FromRole="VariatySeed" ToRole="Seed" />
+          <NavigationProperty Name="Variaty" Relationship="Self.FK_TypeSeed_Variaty" FromRole="VariatySeed" ToRole="Variaty" />
+        </EntityType>
+        <Association Name="FK_Seed_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Seed" Type="Self.Seed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seed">
+              <PropertyRef Name="idBank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Farm_Farm">
+          <End Role="TypeFarm" Type="Self.TypeFarm" Multiplicity="1" />
+          <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeFarm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farm">
+              <PropertyRef Name="idTypeFarm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Farm_TypeLight">
+          <End Role="Ligth" Type="Self.Ligth" Multiplicity="0..1" />
+          <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ligth">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Farm">
+              <PropertyRef Name="idLight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Farm">
+          <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="idFarm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ligth_TypeLight">
+          <End Role="TypeLight" Type="Self.TypeLight" Multiplicity="1" />
+          <End Role="Ligth" Type="Self.Ligth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeLight">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ligth">
+              <PropertyRef Name="idTypeLight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plant_Plant">
+          <End Role="Seed" Type="Self.Seed" Multiplicity="1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="idSeed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seed_Sex">
+          <End Role="Sex" Type="Self.Sex" Multiplicity="1" />
+          <End Role="Seed" Type="Self.Seed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sex">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seed">
+              <PropertyRef Name="idSex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seed_TypeSeed">
+          <End Role="TypeSeed" Type="Self.TypeSeed" Multiplicity="1" />
+          <End Role="Seed" Type="Self.Seed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeSeed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seed">
+              <PropertyRef Name="idTypeSeed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeSeed_Seed">
+          <End Role="Seed" Type="Self.Seed" Multiplicity="1" />
+          <End Role="VariatySeed" Type="Self.VariatySeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VariatySeed">
+              <PropertyRef Name="idSeed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeSeed_Variaty">
+          <End Role="Variaty" Type="Self.Variaty" Multiplicity="1" />
+          <End Role="VariatySeed" Type="Self.VariatySeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variaty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VariatySeed">
+              <PropertyRef Name="idVariety" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GROWEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Farms" EntityType="Self.Farm" />
+          <EntitySet Name="Ligths" EntityType="Self.Ligth" />
+          <EntitySet Name="Plants" EntityType="Self.Plant" />
+          <EntitySet Name="Seeds" EntityType="Self.Seed" />
+          <EntitySet Name="Sexes" EntityType="Self.Sex" />
+          <EntitySet Name="TypeFarms" EntityType="Self.TypeFarm" />
+          <EntitySet Name="TypeLights" EntityType="Self.TypeLight" />
+          <EntitySet Name="TypeSeeds" EntityType="Self.TypeSeed" />
+          <EntitySet Name="Variaties" EntityType="Self.Variaty" />
+          <EntitySet Name="VariatySeeds" EntityType="Self.VariatySeed" />
+          <AssociationSet Name="FK_Seed_Bank" Association="Self.FK_Seed_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Seed" EntitySet="Seeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Farm_Farm" Association="Self.FK_Farm_Farm">
+            <End Role="TypeFarm" EntitySet="TypeFarms" />
+            <End Role="Farm" EntitySet="Farms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Farm_TypeLight" Association="Self.FK_Farm_TypeLight">
+            <End Role="Ligth" EntitySet="Ligths" />
+            <End Role="Farm" EntitySet="Farms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Farm" Association="Self.FK_Plant_Farm">
+            <End Role="Farm" EntitySet="Farms" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ligth_TypeLight" Association="Self.FK_Ligth_TypeLight">
+            <End Role="TypeLight" EntitySet="TypeLights" />
+            <End Role="Ligth" EntitySet="Ligths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plant_Plant" Association="Self.FK_Plant_Plant">
+            <End Role="Seed" EntitySet="Seeds" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seed_Sex" Association="Self.FK_Seed_Sex">
+            <End Role="Sex" EntitySet="Sexes" />
+            <End Role="Seed" EntitySet="Seeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seed_TypeSeed" Association="Self.FK_Seed_TypeSeed">
+            <End Role="TypeSeed" EntitySet="TypeSeeds" />
+            <End Role="Seed" EntitySet="Seeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeSeed_Seed" Association="Self.FK_TypeSeed_Seed">
+            <End Role="Seed" EntitySet="Seeds" />
+            <End Role="VariatySeed" EntitySet="VariatySeeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeSeed_Variaty" Association="Self.FK_TypeSeed_Variaty">
+            <End Role="Variaty" EntitySet="Variaties" />
+            <End Role="VariatySeed" EntitySet="VariatySeeds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GROWModelStoreContainer" CdmEntityContainer="GROWEntities">
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="GROWModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Farms">
+            <EntityTypeMapping TypeName="GROWModel.Farm">
+              <MappingFragment StoreEntitySet="Farm">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dateBegin" ColumnName="dateBegin" />
+                <ScalarProperty Name="dateEnd" ColumnName="dateEnd" />
+                <ScalarProperty Name="idTypeFarm" ColumnName="idTypeFarm" />
+                <ScalarProperty Name="idLight" ColumnName="idLight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ligths">
+            <EntityTypeMapping TypeName="GROWModel.Ligth">
+              <MappingFragment StoreEntitySet="Ligth">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="watts" ColumnName="watts" />
+                <ScalarProperty Name="idTypeLight" ColumnName="idTypeLight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plants">
+            <EntityTypeMapping TypeName="GROWModel.Plant">
+              <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="idSeed" ColumnName="idSeed" />
+                <ScalarProperty Name="idFarm" ColumnName="idFarm" />
+                <ScalarProperty Name="dateGermination" ColumnName="dateGermination" />
+                <ScalarProperty Name="dateGrow" ColumnName="dateGrow" />
+                <ScalarProperty Name="dateFlow" ColumnName="dateFlow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seeds">
+            <EntityTypeMapping TypeName="GROWModel.Seed">
+              <MappingFragment StoreEntitySet="Seed">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idBank" ColumnName="idBank" />
+                <ScalarProperty Name="genetic" ColumnName="genetic" />
+                <ScalarProperty Name="daysGrow" ColumnName="daysGrow" />
+                <ScalarProperty Name="daysFlow" ColumnName="daysFlow" />
+                <ScalarProperty Name="heightIndoor" ColumnName="heightIndoor" />
+                <ScalarProperty Name="heightOutdoor" ColumnName="heightOutdoor" />
+                <ScalarProperty Name="idTypeSeed" ColumnName="idTypeSeed" />
+                <ScalarProperty Name="idSex" ColumnName="idSex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexes">
+            <EntityTypeMapping TypeName="GROWModel.Sex">
+              <MappingFragment StoreEntitySet="Sex">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeFarms">
+            <EntityTypeMapping TypeName="GROWModel.TypeFarm">
+              <MappingFragment StoreEntitySet="TypeFarm">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeLights">
+            <EntityTypeMapping TypeName="GROWModel.TypeLight">
+              <MappingFragment StoreEntitySet="TypeLight">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeSeeds">
+            <EntityTypeMapping TypeName="GROWModel.TypeSeed">
+              <MappingFragment StoreEntitySet="TypeSeed">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variaties">
+            <EntityTypeMapping TypeName="GROWModel.Variaty">
+              <MappingFragment StoreEntitySet="Variaty">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariatySeeds">
+            <EntityTypeMapping TypeName="GROWModel.VariatySeed">
+              <MappingFragment StoreEntitySet="VariatySeed">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSeed" ColumnName="idSeed" />
+                <ScalarProperty Name="idVariety" ColumnName="idVariety" />
+                <ScalarProperty Name="porcentage" ColumnName="porcentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
