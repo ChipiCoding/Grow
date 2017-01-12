@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Grow.Service.ResponseMessages
+﻿namespace Grow.Service.ResponseMessages
 {
+    using System.Collections.Generic;
+
     public class InnerSeed
     {
         public string Id { get; set; }

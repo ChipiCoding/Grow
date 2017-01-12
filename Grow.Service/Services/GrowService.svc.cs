@@ -2,7 +2,6 @@
 {
     using System.Linq;
     using System.Collections.Generic;
-    using Data.Model.Entities;
     using System.ServiceModel;
     using Data.Implementation;
     using Contracts;
