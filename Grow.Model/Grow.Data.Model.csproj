@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7D2E191-3A69-482D-8F46-BAA24C66BF3B}</ProjectGuid>
+    <ProjectGuid>{D41DE9CB-376A-43D7-A3EB-479F523B92A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Grow.Business</RootNamespace>
-    <AssemblyName>Grow.Business</AssemblyName>
+    <RootNamespace>Grow.Data.Model</RootNamespace>
+    <AssemblyName>Grow.Data.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Bank.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Farm.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GrowEntities.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\Ligth.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Plant.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Seed.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Sex.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TypeFarm.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TypeLight.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TypeSeed.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Variaty.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VariatySeed.cs">
+      <DependentUpon>GrowEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\GrowEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GrowEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

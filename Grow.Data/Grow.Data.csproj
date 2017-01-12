@@ -55,83 +55,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Bank.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Farm.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\GrowEntities.Context.cs">
+    <Compile Include="GrowEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GrowEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\GrowEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\GrowEntities.Designer.cs">
+    <Compile Include="GrowEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GrowEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Ligth.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Plant.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Seed.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Sex.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TypeFarm.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TypeLight.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TypeSeed.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Variaty.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\VariatySeed.cs">
-      <DependentUpon>GrowEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Implementation\BankRepository.cs" />
-    <Compile Include="Implementation\FarmRepository.cs" />
-    <Compile Include="Implementation\LightRepository.cs" />
-    <Compile Include="Implementation\PlantRepository.cs" />
-    <Compile Include="Implementation\Repository.cs" />
-    <Compile Include="Implementation\SeedRepository.cs" />
-    <Compile Include="Implementation\TypeFarmRepository.cs" />
-    <Compile Include="Implementation\TypeLightRepository.cs" />
-    <Compile Include="Implementation\VariatyRepository.cs" />
-    <Compile Include="Implementation\VariatySeedRepository.cs" />
-    <Compile Include="Interfaces\IBankRepository.cs" />
-    <Compile Include="Interfaces\IFarmRepository.cs" />
-    <Compile Include="Interfaces\ILightRepository.cs" />
-    <Compile Include="Interfaces\IPlantRepository.cs" />
+    <Compile Include="Managers\BankRepositoryManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\ISeedRepository.cs" />
-    <Compile Include="Interfaces\ITypeFarmRepository.cs" />
-    <Compile Include="Interfaces\ITypeLightRepository.cs" />
-    <Compile Include="Interfaces\IVariatySeedRepository.cs" />
-    <Compile Include="Interfaces\IVariatyRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Entities\GrowEntities.edmx">
+    <EntityDeploy Include="GrowEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GrowEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entities\GrowEntities.edmx.diagram">
+    <None Include="GrowEntities.edmx.diagram">
       <DependentUpon>GrowEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -140,23 +84,20 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Grow.Model\Grow.Model.csproj">
+    <ProjectReference Include="..\Grow.Model\Grow.Data.Model.csproj">
       <Project>{d41de9cb-376a-43d7-a3eb-479f523b92a2}</Project>
-      <Name>Grow.Model</Name>
+      <Name>Grow.Data.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\GrowEntities.Context.tt">
+    <Content Include="Deployment\GrowDB.sql" />
+    <Content Include="GrowEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GrowEntities.edmx</DependentUpon>
       <LastGenOutput>GrowEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entities\GrowEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GrowEntities.edmx</DependentUpon>
-      <LastGenOutput>GrowEntities.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

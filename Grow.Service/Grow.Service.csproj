@@ -100,21 +100,18 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="GrowService.svc" />
+    <Content Include="Services\GrowService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GrowService.svc.cs">
+    <Compile Include="ResponseMessages\GetBanksResponse.cs" />
+    <Compile Include="Services\GrowService.svc.cs">
       <DependentUpon>GrowService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IGrowService.cs" />
-    <Compile Include="Implementation\BankService.cs" />
-    <Compile Include="Interfaces\IBankService.cs" />
+    <Compile Include="Contracts\IGrowService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -128,13 +125,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Grow.Business\Grow.Business.csproj">
-      <Project>{f7d2e191-3a69-482d-8f46-baa24c66bf3b}</Project>
-      <Name>Grow.Business</Name>
+    <ProjectReference Include="..\Grow.Data\Grow.Data.csproj">
+      <Project>{7895c96a-86b5-468c-8551-613cea27a221}</Project>
+      <Name>Grow.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Grow.Model\Grow.Model.csproj">
+    <ProjectReference Include="..\Grow.Model\Grow.Data.Model.csproj">
       <Project>{d41de9cb-376a-43d7-a3eb-479f523b92a2}</Project>
-      <Name>Grow.Model</Name>
+      <Name>Grow.Data.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

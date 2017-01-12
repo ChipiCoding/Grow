@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grow.Data", "Grow.Data\Grow.Data.csproj", "{7895C96A-86B5-468C-8551-613CEA27A221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grow.Model", "Grow.Model\Grow.Model.csproj", "{D41DE9CB-376A-43D7-A3EB-479F523B92A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grow.Data.Model", "Grow.Model\Grow.Data.Model.csproj", "{D41DE9CB-376A-43D7-A3EB-479F523B92A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grow.Business", "Grow.Business\Grow.Business.csproj", "{F7D2E191-3A69-482D-8F46-BAA24C66BF3B}"
 EndProject
