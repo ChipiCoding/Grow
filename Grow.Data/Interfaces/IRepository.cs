@@ -3,7 +3,7 @@
     #region Usings
 
     using System.Collections.Generic;
-
+     
     #endregion
 
     public interface IRepository<T> where T : class
