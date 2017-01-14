@@ -16,12 +16,15 @@
             return result.Select(bank => new GetBanksResponse()
             {
                 Id = bank.id.ToString(),
+                Name = bank.name,
                 Description = bank.description,
                 Code = bank.code,
                 Seeds = bank.Seeds.Select(seed => new InnerSeed()
                 {
                     Id = seed.id.ToString(),
-                    Name = seed.name
+                    Name = seed.name,
+                    Genetic = seed.genetic,
+                    
                 }).ToList()
             }).ToList();
         }
