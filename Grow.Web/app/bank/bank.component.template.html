@@ -1,0 +1,61 @@
+<!--<ul class="list-group">
+  <li class="list-group-item" *ngFor="let b of banks" [routerLinkActive]="['active']">
+    <span class="badge">{{b.id}}</span>
+    <a [routerLink]="['/Banks']">
+      {{b.description}}
+    </a>
+  </li>
+</ul>-->
+<form id="filter">
+  <label>Search</label>
+  <input type="text" [(ngModel)]="term" name="firts"> <span class="fa fa-search"></span>
+</form>
+<br>
+<div class="panel panel-success" *ngFor="let b of banks">
+
+  <div class="panel-heading">{{b.Name}}</div>
+  <div class="panel-body">
+    <p>{{b.Description  | truncate : 250}}
+    </p>
+    <button class="btn-xs btn-success" (click)="toggleElement()">See seeds...</button>
+  </div>
+  <table class="table table-hover" [hidden]="hideElement" [id]="b.Id">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Genetic</th>
+      </tr>
+    </thead>
+    <!--
+    <tr>
+      <th>Name</th>
+      <th>Genetic</th>      
+    </tr>-->
+    <tbody>
+      <tr *ngFor="let s of b.Seeds">
+        <td>{{s.Id}}</td>
+        <td>{{s.Name}}</td>
+        <td>{{s.Genetic}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="!banks">No matching elements</div>
+<!--<div class="list-group">
+  <a [routerLink]="['/']" class="list-group-item" *ngFor="let b of banks">
+    <h4 class="list-group-item-heading">{{b.code}}</h4>
+    <p class="list-group-item-text">{{b.description}}</p>    
+  </a>
+</div>
+
+<div class="list-group" *ngFor="let b of banks" >
+  <a [routerLink]="['/Banks']" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <small>{{b.id}}</small>
+      <h5 class="mb-1">{{b.description}}</h5>
+    </div>
+    <p class="mb-1"> <small>{{b.description}}.</small>
+  </a>
+</div>
+-->
