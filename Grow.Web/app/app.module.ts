@@ -1,4 +1,5 @@
 import { NgModule, Injectable }      from '@angular/core';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Componente principal
@@ -24,7 +25,7 @@ import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
-  imports:      [ BrowserModule, routing, HttpModule, FormsModule ],
+  imports:      [ BrowserModule, routing, HttpModule, FormsModule, Ng2Bs3ModalModule ],
   declarations: [ AppComponent,  home, bank, TruncateBankPipe],
   bootstrap:    [ AppComponent ]
 })

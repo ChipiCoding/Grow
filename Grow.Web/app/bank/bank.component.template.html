@@ -1,21 +1,87 @@
-<!--<ul class="list-group">
-  <li class="list-group-item" *ngFor="let b of banks" [routerLinkActive]="['active']">
-    <span class="badge">{{b.id}}</span>
-    <a [routerLink]="['/Banks']">
-      {{b.description}}
-    </a>
-  </li>
-</ul>-->
 <form id="filter">
   <label>Search</label>
   <input type="text" [(ngModel)]="term" name="firts"> <span class="fa fa-search"></span>
 </form>
+<!--<br>-->
+
+<!--<div *ngFor="let b of banks">
+  <button type="button" class="btn-xs btn-success" (click)="nameModal.open()">Open me!</button>
+
+  <modal #nameModal>
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">{{b.Name}}!</h4>
+    </modal-header>
+    <modal-body>
+      {{b.Description}}
+    </modal-body>-->
+<!--<modal-footer [show-default-buttons]="true"></modal-footer>-->
+<!--<modal-footer>
+      <button type="button" class="btn-xs btn-default" data-dismiss="modal" (click)="nameModal.dismiss()">Cancel</button>
+      <button type="button" class="btn-xs btn-success" (click)="nameModal.close()">Ok</button>
+    </modal-footer>
+  </modal>
+</div>-->
+
 <br>
-<div class="panel panel-success" *ngFor="let b of banks">
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let b of banks" [routerLinkActive]="['active']">
+    <span class="badge" (click)="toggleElement()">{{b.Code}}</span>
+    <a [routerLink]="['/Banks']" (click)="nameModal.open()">
+      {{b.Name}}
+    </a>
+    <!--<button class="btn-xs btn-success" >See seeds...</button>-->
+
+    <table class="table table-hover" [hidden]="hideElement" [id]="b.Id">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Genetic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of b.Seeds">
+          <td>{{s.Id}}</td>
+          <td (click)="nameModal.open()">{{s.Name}}</td>
+          <td>{{s.Genetic}}</td>
+          <modal #nameModal>
+            <modal-header [show-close]="true">
+              <h4 class="modal-title">{{s.Name}}!</h4>
+            </modal-header>
+            <modal-body>
+              {{s.Genetic}}
+            </modal-body>
+            <!--<modal-footer [show-default-buttons]="true"></modal-footer>-->
+            <modal-footer>
+              <!--<button type="button" class="btn-xs btn-default" data-dismiss="modal" (click)="nameModal.dismiss()">Cancel</button>-->
+              <button type="button" class="btn-xs btn-success" (click)="nameModal.close()">Ok</button>
+            </modal-footer>
+          </modal>
+        </tr>
+      </tbody>
+    </table>
+
+    <modal #nameModal>
+      <modal-header [show-close]="true">
+        <h4 class="modal-title">{{b.Name}}!</h4>
+      </modal-header>
+      <modal-body>
+        {{b.Description}}
+      </modal-body>
+      <!--<modal-footer [show-default-buttons]="true"></modal-footer>-->
+      <modal-footer>
+        <!--<button type="button" class="btn-xs btn-default" data-dismiss="modal" (click)="nameModal.dismiss()">Cancel</button>-->
+        <button type="button" class="btn-xs btn-success" (click)="nameModal.close()">Ok</button>
+      </modal-footer>
+    </modal>
+
+  </li>
+</ul>
+<!--<div class="panel panel-success" *ngFor="let b of banks">
 
   <div class="panel-heading">{{b.Name}}</div>
   <div class="panel-body">
-    <p>{{b.Description  | truncate : 250}}
+    <p>{{b.Description | truncate : 250}}
     </p>
     <button class="btn-xs btn-success" (click)="toggleElement()">See seeds...</button>
   </div>
@@ -27,11 +93,6 @@
         <th>Genetic</th>
       </tr>
     </thead>
-    <!--
-    <tr>
-      <th>Name</th>
-      <th>Genetic</th>      
-    </tr>-->
     <tbody>
       <tr *ngFor="let s of b.Seeds">
         <td>{{s.Id}}</td>
@@ -40,22 +101,24 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div>-->
 <div *ngIf="!banks">No matching elements</div>
-<!--<div class="list-group">
-  <a [routerLink]="['/']" class="list-group-item" *ngFor="let b of banks">
-    <h4 class="list-group-item-heading">{{b.code}}</h4>
-    <p class="list-group-item-text">{{b.description}}</p>    
-  </a>
-</div>
+{{banks}}
+<!--<br>
 
-<div class="list-group" *ngFor="let b of banks" >
-  <a [routerLink]="['/Banks']" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <small>{{b.id}}</small>
-      <h5 class="mb-1">{{b.description}}</h5>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" *ngFor="let b of banks">
+  <div class="panel panel-success">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"  href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          {{b.Name}}
+        </a>
+      </h4>
     </div>
-    <p class="mb-1"> <small>{{b.description}}.</small>
-  </a>
-</div>
--->
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>-->

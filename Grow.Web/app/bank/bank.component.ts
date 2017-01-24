@@ -12,7 +12,7 @@ import { BankService } from './bank.service';
 })
 
 export class bank {
-    private hideElement: boolean = false;
+    private hideElement: boolean = true;
 
     toggleElement() {
 
