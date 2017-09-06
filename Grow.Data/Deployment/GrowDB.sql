@@ -1,6 +1,17 @@
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2016 (13.0.1601)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2017
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
 USE [GROW]
 GO
-/****** Object:  Table [dbo].[Bank]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Bank]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,9 +25,8 @@ CREATE TABLE [dbo].[Bank](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[Farm]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Farm]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,9 +43,8 @@ CREATE TABLE [dbo].[Farm](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[Ligth]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Ligth]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,9 +59,8 @@ CREATE TABLE [dbo].[Ligth](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[Plant]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Plant]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -70,9 +78,8 @@ CREATE TABLE [dbo].[Plant](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[Seed]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Seed]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -93,9 +100,8 @@ CREATE TABLE [dbo].[Seed](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[Sex]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Sex]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,9 +115,8 @@ CREATE TABLE [dbo].[Sex](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[TypeFarm]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[TypeFarm]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,9 +130,8 @@ CREATE TABLE [dbo].[TypeFarm](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[TypeLight]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[TypeLight]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,9 +145,8 @@ CREATE TABLE [dbo].[TypeLight](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[TypeSeed]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[TypeSeed]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -157,9 +160,8 @@ CREATE TABLE [dbo].[TypeSeed](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[Variaty]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[Variaty]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,9 +175,8 @@ CREATE TABLE [dbo].[Variaty](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-/****** Object:  Table [dbo].[VariatySeed]    Script Date: 1/10/2017 8:29:33 PM ******/
+/****** Object:  Table [dbo].[VariatySeed]    Script Date: 9/6/2017 3:36:49 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,85 +191,6 @@ CREATE TABLE [dbo].[VariatySeed](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
-GO
-SET IDENTITY_INSERT [dbo].[Bank] ON 
-
-GO
-INSERT [dbo].[Bank] ([id], [code], [description]) VALUES (1, N'DSB       ', N'Duke Seeds Banks')
-GO
-INSERT [dbo].[Bank] ([id], [code], [description]) VALUES (2, N'CB        ', N'CannaBiogen')
-GO
-SET IDENTITY_INSERT [dbo].[Bank] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Seed] ON 
-
-GO
-INSERT [dbo].[Seed] ([id], [name], [idBank], [genetic], [daysGrow], [daysFlow], [heightIndoor], [heightOutdoor], [idTypeSeed], [idSex]) VALUES (1, N'KAJELA', 1, N'LOW RYDER X MAZAR', 17, 35, NULL, NULL, 1, 1)
-GO
-INSERT [dbo].[Seed] ([id], [name], [idBank], [genetic], [daysGrow], [daysFlow], [heightIndoor], [heightOutdoor], [idTypeSeed], [idSex]) VALUES (2, N'PRUEBA', 1, N'GEN 1 & GEN 2', 90, 98, NULL, NULL, 1, 2)
-GO
-SET IDENTITY_INSERT [dbo].[Seed] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Sex] ON 
-
-GO
-INSERT [dbo].[Sex] ([id], [code], [description]) VALUES (1, N'M         ', N'MACHO')
-GO
-INSERT [dbo].[Sex] ([id], [code], [description]) VALUES (2, N'F         ', N'FEMININIZADA')
-GO
-INSERT [dbo].[Sex] ([id], [code], [description]) VALUES (4, N'NN        ', N'DESCONOCIDO')
-GO
-SET IDENTITY_INSERT [dbo].[Sex] OFF
-GO
-SET IDENTITY_INSERT [dbo].[TypeFarm] ON 
-
-GO
-INSERT [dbo].[TypeFarm] ([id], [code], [description]) VALUES (1, N'ID        ', N'Indoor')
-GO
-INSERT [dbo].[TypeFarm] ([id], [code], [description]) VALUES (2, N'OD        ', N'Outdoor')
-GO
-SET IDENTITY_INSERT [dbo].[TypeFarm] OFF
-GO
-SET IDENTITY_INSERT [dbo].[TypeLight] ON 
-
-GO
-INSERT [dbo].[TypeLight] ([id], [code], [description]) VALUES (1, N'LED       ', N'LED')
-GO
-INSERT [dbo].[TypeLight] ([id], [code], [description]) VALUES (2, N'HPS       ', N'High Pressure Sodium')
-GO
-SET IDENTITY_INSERT [dbo].[TypeLight] OFF
-GO
-SET IDENTITY_INSERT [dbo].[TypeSeed] ON 
-
-GO
-INSERT [dbo].[TypeSeed] ([id], [code], [description]) VALUES (1, N'F         ', N'FEMINIZADA')
-GO
-INSERT [dbo].[TypeSeed] ([id], [code], [description]) VALUES (2, N'R         ', N'REGULAR')
-GO
-INSERT [dbo].[TypeSeed] ([id], [code], [description]) VALUES (3, N'A         ', N'AUTOMATICA')
-GO
-SET IDENTITY_INSERT [dbo].[TypeSeed] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Variaty] ON 
-
-GO
-INSERT [dbo].[Variaty] ([id], [code], [description]) VALUES (1, N'I         ', N'INDICA')
-GO
-INSERT [dbo].[Variaty] ([id], [code], [description]) VALUES (2, N'S         ', N'SATIVA')
-GO
-INSERT [dbo].[Variaty] ([id], [code], [description]) VALUES (3, N'R         ', N'RUDELARIS')
-GO
-SET IDENTITY_INSERT [dbo].[Variaty] OFF
-GO
-SET IDENTITY_INSERT [dbo].[VariatySeed] ON 
-
-GO
-INSERT [dbo].[VariatySeed] ([id], [idSeed], [idVariety], [porcentage]) VALUES (1, 1, 1, 50)
-GO
-INSERT [dbo].[VariatySeed] ([id], [idSeed], [idVariety], [porcentage]) VALUES (2, 1, 3, 50)
-GO
-SET IDENTITY_INSERT [dbo].[VariatySeed] OFF
 GO
 ALTER TABLE [dbo].[Farm]  WITH CHECK ADD  CONSTRAINT [FK_Farm_Farm] FOREIGN KEY([idTypeFarm])
 REFERENCES [dbo].[TypeFarm] ([id])
